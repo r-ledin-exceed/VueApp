@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { Map, TileLayer, OsmSource, Geoloc } from 'vuelayers'
+import { Map, TileLayer, OsmSource, Geoloc, Overlay, Feature } from 'vuelayers'
 import 'vuelayers/lib/style.css'
 import VueLayers from 'vuelayers'
-import { Feature } from 'vuelayers'
+import vuetify from '@/plugins/vuetify.js' // path to vuetify export
 
-Vue.use(Feature)
 
 Vue.use(Map, {
   load: {
@@ -18,6 +17,8 @@ Vue.use(Map, {
 Vue.use(TileLayer)
 Vue.use(OsmSource)
 Vue.use(Geoloc)
+Vue.use(Overlay)
+Vue.use(Feature)
 
 Vue.use(VueLayers, {
   dataProjection: 'EPSG:4326', // coords
@@ -27,5 +28,6 @@ Vue.use(VueLayers, {
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
+  vuetify,
+  render: h => h(App)
 }).$mount('#app')

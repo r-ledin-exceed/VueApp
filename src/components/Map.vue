@@ -16,11 +16,11 @@
           <vl-source-osm></vl-source-osm>
       </vl-layer-tile>
 
-    <vl-overlay id="overlay"  :position="overlayCoordinate">
-      <img :src="require('../assets/maps-and-flags.svg')" @click="() => {tester()}" class="img"/>
-      <Frame @click="attr = true"/>
-    </vl-overlay>
-
+                                          <vl-overlay id="overlay"  :position="overlayCoordinate">
+                                            <img :src="require('../assets/maps-and-flags.svg')" @click="() => {tester()}" class="img"/>
+                                              <Frame/> 
+                                          </vl-overlay>
+                                            
         <!-- <vl-overlay id="overlay2" :position="overlayCoordinate2">
         <div class="overlay-frame">
           Information<br><br>
@@ -68,23 +68,6 @@ import Frame from "@/components/Frame"
 #map {
   height: 100vh;
   width: 100vw;
-}
-#point {
-  background-color: black;
-}
-
-/* .hidden {
-  display: none;
-} */
-
-.overlay-frame {
-  width: 13vw;
-  height: 22vh;
-  border: 1px black solid;
-  border-radius: 0px 25px 25px 25px;
-  padding: 5px 5px 5px 5px;
-  background-color: rgba(31, 31, 30, 0.6);
-  color: #fff;
 }
 
 .img {

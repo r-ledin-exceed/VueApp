@@ -1,9 +1,9 @@
 <template>
-    <v-dialog 
+    <v-dialog data-app
         class="dialog"
         v-model="dialog"
         width="400"
-      >
+       >
         <template v-slot:activator="{ on, attrs }">
           <v-btn
             color="red lighten-2"
@@ -11,7 +11,7 @@
             v-bind="attrs"
             v-on="on"
           >
-            Click Me
+            {{ dialog }}
           </v-btn>
         </template>
   
@@ -19,13 +19,13 @@
           <v-card-title class="headline grey lighten-2">
             Information
           </v-card-title>
-          1
-          <v-card-text>
-            Name: "Dozor-Punkt"
+          
+          <v-card-text id="card">
+            Name: <span class="value active">{{name}}</span> <input type="text" placeholder='write here name' class="input hidden" id="#input1"> 
             <v-divider></v-divider>
-            Position: [62.726634, 12.003391]
+            Position: <span class="value active">[62.726634, 12.003391]</span> <input type="text" placeholder='write here coords' class="input hidden" id="#input2">
             <v-divider></v-divider>
-            Signal: Yes
+            Signal: <span class="value active">Yes</span> <input type="text" placeholder='Signal' class="input hidden" id="#input3">
             <v-divider></v-divider>
           </v-card-text>
           
@@ -43,7 +43,7 @@
             <v-btn
               color="primary"
               text
-              @click="dialog = false"
+              v-on:click="rename(count)"
             >
               Edit
             </v-btn>
@@ -56,13 +56,24 @@
 
 export default {
   data () {
+    
     return {
+      name: "Nochnoi Dozor",
       dialog: false,
-    }
+      
+      }
+
   },
+  methods: {
+    
+
+  }
 }
+
 </script>
 
 <style>
-
+.hidden {
+  display: none;
+}
 </style>

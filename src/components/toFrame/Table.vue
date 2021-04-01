@@ -7,6 +7,7 @@
     <v-divider></v-divider>
     <span>Signal: {{information.signal}} </span> 
 
+
 </v-card-text>
 </template>
 
@@ -19,7 +20,7 @@ export default {
     return {
       information: {
       name: "Nochnoi Dozor",
-      position: "[62.726634, 12.003391]",
+      position: [62.726634, 12.003391],
       signal: "Yes",       
       }
     }

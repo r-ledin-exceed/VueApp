@@ -9,14 +9,6 @@
     v-bind="attrs"
     v-on="on"  
     class="img"/>
-      
-      <!-- <v-btn
-      color="red lighten-2"
-      dark
-      v-bind="attrs"
-      v-on="on">
-        {{ dialog }}
-      </v-btn> -->
 
   </template>
 
@@ -58,31 +50,26 @@
 </template>
 
 <script>
-import Table from "@/components/toFrame/Table"
-import Input from "@/components/toFrame/Input"
+  import Table from "@/components/toFrame/Table"
+  import Input from "@/components/toFrame/Input"
 
 
-export default {
-  data () {
-    
-    return {
-      edit: false,
-      dialog: false
-      }
-
-  },
-  methods: {
-    
-
-  },
-  components: {
-    Table,
-    Input
+  export default {
+    data () {
+      return {
+        edit: false,
+        dialog: false
+        }
+    },
+    methods: {
+      
+    },
+    components: {
+      Table,
+      Input
+    }
   }
-}
-
 </script>
 
 <style>
-
 </style>

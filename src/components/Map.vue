@@ -4,22 +4,13 @@
       <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation" projection="EPSG:4326"></vl-view>
     
       <vl-layer-tile>
-        <!-- <vl-feature id="point2" :properties="{prop: 'value', prop2: 'value'}">
-          <vl-geom-point :coordinates="[-75.726634,28.003391]"></vl-geom-point>
-        </vl-feature>
-        <vl-feature id="point3" :properties="{prop: 'value', prop2: 'value'}">
-          <vl-geom-point :coordinates="[0,0]"></vl-geom-point>
-        </vl-feature>  -->
-        <vl-source-osm></vl-source-osm>
+         <vl-source-osm></vl-source-osm>
       </vl-layer-tile>
-
-      <vl-overlay id="adding" :position="[50,50]" >
-        <Nav/>
-      </vl-overlay>
 
       <template v-for="item in items" > 
         <vl-overlay v-bind:id="overlay+item.coords"  v-bind:position="item.coords" :key="item.coords">
           <Frame/>
+
         </vl-overlay>
       </template>  
 
@@ -29,10 +20,11 @@
 
 <script>
   import Frame from "@/components/Frame"
-  import Nav from "@/components/Nav"
 
   export default {
-    data () {
+    name: "mainMap",
+
+      data () {
         return { 
         items: [
           {coords: [-75.726634, 28.003391]}, 
@@ -46,11 +38,13 @@
         }
     },
       methods: {
-
+        addMarker(coords){
+          this.items = [...this.items, coords]
+        }
     },
       components: {
         Frame,
-        Nav
+      
       },
   }
 </script>
@@ -65,5 +59,4 @@
 .img {
   width:1vw;
 }
-
 </style>

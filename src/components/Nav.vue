@@ -29,7 +29,7 @@
         <v-btn
         color="primary"
         text
-        @click="edit = false">
+        @click="dialog = false">
         close
         </v-btn>
 

@@ -1,18 +1,32 @@
 <template>
- <v-card-text id="card">
+<div class="main">
+  <v-card-text id="card">
 
-  <!-- MUST BE V-FOR="" -->
+    <!-- MUST BE V-FOR="" -->
     
     <span>Name:<v-text-field v-model="information.name"></v-text-field></span> 
     <v-divider></v-divider>
    
-  <!-- ---------------- -->
+    <!-- ---------------- -->
 
     <span>Position:<v-text-field v-model="information.position"></v-text-field></span>
     <v-divider></v-divider>
     <span>Signal: <v-text-field v-model="information.signal"></v-text-field> </span> 
 
-</v-card-text>
+  </v-card-text>
+
+  <!-- <v-divider></v-divider>
+
+  <v-card-actions>
+        <v-btn v-else
+        @click="addingNewMarker()"
+        color="primary"
+        text
+        v-on:click="edit = false">
+        Save
+        </v-btn>
+  </v-card-actions> -->
+</div>
 </template>
 
 <script>
@@ -23,7 +37,7 @@ export default {
     return {
       information: {
       name: "Nochnoi Dozor",
-      position: "[62.726634, 12.003391]",
+      position: [62.726634, 12.003391],
       signal: "Yes",
       }       
       }

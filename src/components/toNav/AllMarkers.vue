@@ -2,7 +2,6 @@
  <v-card-text id="card">
 
   <template v-for="item in markers">
-      <!-- <div v-for="(name, value) in item"> -->
         <div :key="item" class="marker">
         <span :key="item.name">Name -- {{item.name}}</span><br>
         <span :key="item.position">Position -- {{item.position}}</span><br>

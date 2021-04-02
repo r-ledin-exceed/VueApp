@@ -1,11 +1,11 @@
 <template>
  <v-card-text id="card">
 
-  <template v-for="item in markers">
-        <div :key="item" class="marker">
-        <span :key="item.name">Name -- {{item.name}}</span><br>
-        <span :key="item.position">Position -- {{item.position}}</span><br>
-        <span :key="item.signal">Signal -- {{item.signal}}</span><br>
+  <template v-for="(item, index) in markers">
+        <div :key="index" class="marker">
+        <span>Name -- {{item.name}}</span><br>
+        <span>Position -- {{item.position}}</span><br>
+        <span>Signal -- {{item.signal}}</span><br>
         </div>
   </template>
 

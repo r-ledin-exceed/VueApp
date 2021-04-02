@@ -7,10 +7,9 @@
          <vl-source-osm></vl-source-osm>
       </vl-layer-tile>
 
-      <template v-for="item in items" > 
-        <vl-overlay v-bind:id="overlay+item.coords"  v-bind:position="item.coords" :key="item.coords">
-          <Frame/>
-
+      <template v-for="item in newMarkers" > 
+        <vl-overlay :id="overlay+item.coords"  :position="item.coords" :key="item.coords" >
+          <Frame :id="uuidv4"/>
         </vl-overlay>
       </template>  
 
@@ -20,33 +19,34 @@
 
 <script>
   import Frame from "@/components/Frame"
+  // import { mapState } from 'vuex';
+  // import { v4 as uuidv4 } from 'uuid';
 
   export default {
     name: "mainMap",
-
+      
       data () {
         return { 
-        items: [
-          {coords: [-75.726634, 28.003391]}, 
-          {coords: [62.726634, 12.003391]},
-          {coords: [0, 0]} 
-        ],
         zoom: 4,
         center: [0, 0],
         rotation: 0,
-        
         }
     },
       methods: {
-        addMarker(coords){
-          this.items = [...this.items, coords]
+        generateID() {
+          
         }
     },
       components: {
         Frame,
-      
+        // uuidv4
       },
-  }
+      computed: {
+        newMarkers(){
+          return this.$store.getters.newMarkers
+        }
+      }
+}
 </script>
 
 <style>

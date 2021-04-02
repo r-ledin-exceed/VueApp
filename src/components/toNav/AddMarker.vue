@@ -4,48 +4,46 @@
 
     <!-- MUST BE V-FOR="" -->
     
-    <span>Name:<v-text-field v-model="information.name"></v-text-field></span> 
-    <v-divider></v-divider>
+    <!-- <span>Name:<v-text-field v-model="information.name"></v-text-field></span> 
+    <v-divider></v-divider> -->
    
     <!-- ---------------- -->
 
-    <span>Position:<v-text-field v-model="information.position"></v-text-field></span>
-    <v-divider></v-divider>
-    <span>Signal: <v-text-field v-model="information.signal"></v-text-field> </span> 
+    <span>Position:<v-text-field v-model="position1"></v-text-field></span>
+    <span>Position:<v-text-field v-model="position2"></v-text-field></span>
+    <!-- <v-divider></v-divider>
+    <span>Signal: <v-text-field v-model="information.signal"></v-text-field> </span>  -->
 
   </v-card-text>
 
-  <!-- <v-divider></v-divider>
+  <v-divider></v-divider>
 
   <v-card-actions>
-        <v-btn v-else
-        @click="addingNewMarker()"
+        <v-btn
+        @click="addingNewMarker"
         color="primary"
         text
         v-on:click="edit = false">
-        Save
+        Emmit
         </v-btn>
-  </v-card-actions> -->
+  </v-card-actions>
 </div>
 </template>
 
 <script>
 
 export default {
-  data () {
-    
+  data () {  
     return {
-      information: {
-      name: "Nochnoi Dozor",
-      position: [62.726634, 12.003391],
-      signal: "Yes",
-      }       
+      arr: [+this.position1, +this.position2]
       }
   },
   methods: {
-  
-      
-  
+  addingNewMarker() {
+    let arr = [+this.position1, +this.position2]
+    this.$emit("addmarker", arr)
+    console.log(typeof(arr), arr)
+    }
   }
 }
 

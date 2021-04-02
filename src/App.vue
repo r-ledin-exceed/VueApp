@@ -2,9 +2,9 @@
 <v-app id="app">
   <v-main>
     <Map/>
-    <div class="mapNav">
-    <Nav/>
-    </div>
+      <div class="mapNav">
+        <Nav/>
+      </div>
   </v-main>
 </v-app>
 </template>

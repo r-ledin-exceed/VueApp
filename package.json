@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "uuid": "^3.4.0",
     "vue": "^2.6.11",
     "vuelayers": "^0.11.32",
-    "vuetify": "^2.4.8"
+    "vuetify": "^2.4.8",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

@@ -4,13 +4,13 @@
 
     <!-- MUST BE V-FOR="" -->
     
-    <!-- <span>Name:<v-text-field v-model="information.name"></v-text-field></span> 
-    <v-divider></v-divider> -->
+    <span>Name:<v-text-field v-model="nameMarkers"></v-text-field></span> 
+    <v-divider></v-divider>
    
     <!-- ---------------- -->
 
-    <span>Position:<v-text-field v-model="position1"></v-text-field></span>
-    <span>Position:<v-text-field v-model="position2"></v-text-field></span>
+    <span>Position1:<v-text-field v-model="position1"></v-text-field></span>
+    <span>Position2:<v-text-field v-model="position2"></v-text-field></span>
     <!-- <v-divider></v-divider>
     <span>Signal: <v-text-field v-model="information.signal"></v-text-field> </span>  -->
 
@@ -35,14 +35,20 @@
 export default {
   data () {  
     return {
-      arr: [+this.position1, +this.position2]
+      arr: [+this.position1, +this.position2],
+      namemarker: this.nameMarkers,
+      position1: '',
+      position2: '',
+      nameMarkers: '',
       }
+
   },
   methods: {
   addingNewMarker() {
     let arr = [+this.position1, +this.position2]
-    this.$emit("addmarker", arr)
-    console.log(typeof(arr), arr)
+    let namemarker = this.nameMarkers
+    this.$emit("addmarker", arr, namemarker)
+    console.log(typeof(arr), arr, namemarker)
     }
   }
 }

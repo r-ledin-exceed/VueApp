@@ -19,9 +19,9 @@
         Markers
       </v-card-title>
 
-        <AllMarkers v-show="edit === false"/>
-        <AddMarker v-show="edit === true"
-        @addmarker = "onAddMarker"/>
+      <AllMarkers v-show="edit === false"/>
+      <AddMarker v-show="edit === true"
+      @addmarker = "onAddMarker"/>
 
       <v-divider></v-divider>
         
@@ -43,10 +43,9 @@
         <v-btn v-else
         color="primary"
         text
-        @click="edit = false; call()">
+        @click="edit = false">
         Save
         </v-btn>
-
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -67,13 +66,9 @@ export default {
 
   },
   methods: {
-    call() {
-      
-    },
-
-    onAddMarker(data) {
-      console.log(data, "data")
-      this.$store.dispatch('increment', data)
+    onAddMarker(arr, namemarker) {
+      console.log(arr, namemarker, "data")
+      this.$store.dispatch('increment', {arr, namemarker})
     }
     
    },

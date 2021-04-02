@@ -1,4 +1,4 @@
-<template>
+<template :id='idframe'>
   <v-dialog data-app
   class="dialog"
   v-model="dialog"
@@ -17,30 +17,33 @@
           Information
         </v-card-title>
         
-        <Table v-show="edit === false"/>
-        <Input v-show="edit === true"/>
+        <Player v-show="playersh === true"/>
+        <Table :namelabel="nameframe" :positionlabel="positionframe" v-show="edit === false"/>
+        <Input :oldid="idframe" v-show="edit === true"
+        @editmarker="editMarker"/>
         
         <v-divider></v-divider>
           
         <v-card-actions>
           <v-spacer></v-spacer>
+
           <v-btn
             color="primary"
             text
-            @click="dialog = false">
+            @click="playersh = true">
             Watch
           </v-btn>
 
           <v-btn v-if="edit === false"
             color="primary"
             text
-            v-on:click="edit = true">
+            @click="edit = true">
             Edit
           </v-btn>
           <v-btn v-else
             color="primary"
             text
-            v-on:click="edit = false">
+            @click="edit = false">
             Save
           </v-btn>
 
@@ -52,21 +55,28 @@
 <script>
   import Table from "@/components/toFrame/Table"
   import Input from "@/components/toFrame/Input"
+  import Player from "@/components/toFrame/Player"
 
 
   export default {
+    props:['nameframe', 'positionframe', `idframe`],
     data () {
       return {
         edit: false,
-        dialog: false
+        dialog: false,
+        playersh: false,
         }
     },
     methods: {
-      
+      editMarker(arr, namemarker, id,) {
+      console.log(arr, namemarker, id, "data")
+      this.$store.dispatch('edition', {arr, namemarker, id})
+      }
     },
     components: {
       Table,
-      Input
+      Input,
+      Player
     }
   }
 </script>

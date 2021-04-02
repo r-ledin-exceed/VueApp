@@ -1,11 +1,11 @@
 <template>
  <v-card-text id="card">
 
-  <template v-for="(item, index) in markers">
+  <template v-for="(item, index) in newMarkers">
         <div :key="index" class="marker">
         <span>Name -- {{item.name}}</span><br>
-        <span>Position -- {{item.position}}</span><br>
-        <span>Signal -- {{item.signal}}</span><br>
+        <span>Position -- {{item.coords}}</span><br>
+        <span>Signal -- Yes</span><br>
         </div>
   </template>
 
@@ -19,17 +19,17 @@ export default {
   data () {
     
     return {
-      markers: [
-      {name:"first", position:[10, 10], signal:"yes"},
-      {name:"second", position:[10, 10], signal:"yes"},
-      {name:"third", position:[10, 10], signal:"yes"},
-      ]
-    }
+
+}
   },
   methods: {
     
   },
-
+  computed: {
+  newMarkers(){
+    return this.$store.getters.newMarkers
+  }
+}
 }
 
 </script>

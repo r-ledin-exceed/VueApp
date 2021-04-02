@@ -2,33 +2,50 @@
  <v-card-text id="card">
 
   <!-- MUST BE V-FOR="" -->
-    <span>Name:<v-text-field v-model="information.name"></v-text-field></span> 
+    <span>Name:<v-text-field v-model="editName"></v-text-field></span> 
     <v-divider></v-divider>
-    <span>Position:<v-text-field v-model="information.position"></v-text-field></span>
+    <span>Position1:<v-text-field v-model="position1"></v-text-field></span>
     <v-divider></v-divider>
-    <span>Signal: <v-text-field v-model="information.signal"></v-text-field> </span> 
-  <!-- ---------------- -->
-  
+    <span>Position2:<v-text-field v-model="position2"></v-text-field></span>
+    <v-divider></v-divider>
+
+    <v-card-actions>
+        <v-btn
+        @click="editMarker"
+        color="primary"
+        text
+        v-on:click="edit = false">
+        Emmit
+        </v-btn>
+  </v-card-actions>
 
 </v-card-text>
+
+
 </template>
 
 <script>
 
 export default {
-  data () {
-    
+  props: ['oldid'],
+  data () { 
     return {
-      information: {
-      name: "Nochnoi Dozor",
-      position: [62.726634, 12.003391],
-      signal: "Yes",
-      }       
+       name: this.editName,
+       arr: [+this.position1, +this.position2],
+       id: this.oldid,
+       position1: '',
+       position2: '',
+       editName: '',
       }
   },
   methods: {
-  
-      
+  editMarker(){
+    let arr = [+this.position1, +this.position2]
+    let namemarker = this.editName
+    let id = this.oldid
+    this.$emit("editmarker", arr, namemarker, id)
+    console.log(typeof(arr), arr, namemarker, id)
+  }
   
   }
 }

@@ -11,6 +11,8 @@
     "core-js": "^3.6.5",
     "uuid": "^3.4.0",
     "vue": "^2.6.11",
+    "vue-uuid": "^2.0.2",
+    "vue-video-player": "^5.0.2",
     "vuelayers": "^0.11.32",
     "vuetify": "^2.4.8",
     "vuex": "^3.6.2"

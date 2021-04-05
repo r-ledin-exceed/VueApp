@@ -19,33 +19,28 @@
 
 <script>
   import Frame from "@/components/Frame"
-  // import { mapState } from 'vuex';
-
 
   export default {
     name: "mainMap",
-      props:['this.item.id', 'this.item.name', 'this.item.coords'],
-       
-      data () {
-   
-        return { 
-        zoom: 4,
-        center: [0, 0],
-        rotation: 0,
-        }
+    props:['this.item.id', 'this.item.name', 'this.item.coords'],  
+    data () {
+      return { 
+      zoom: 4,
+      center: [0, 0],
+      rotation: 0,
+      }
     },
       methods: {
-        
+      
     },
-      components: {
-        Frame,
-
-      },
-      computed: {
-        newMarkers(){
-          return this.$store.getters.newMarkers
-        }
+    components: {
+      Frame,
+    },
+    computed: {
+      newMarkers(){
+        return this.$store.getters.newMarkers
       }
+    }
 }
 </script>
 
@@ -53,7 +48,6 @@
 #map {
   height: 100vh;
   width: 100vw;
-
 }
 
 .img {

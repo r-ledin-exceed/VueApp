@@ -13,30 +13,26 @@
 </template>
 
 <script>
-
 export default {
-  
-  data () {
-    
+  data () {   
     return {
-
-}
+    }
   },
   methods: {
     
   },
   computed: {
-  newMarkers(){
-    return this.$store.getters.newMarkers
+    newMarkers(){
+      return this.$store.getters.newMarkers
+    }
   }
 }
-}
-
 </script>
 
 <style>
-.marker {
+  .marker {
     border: 1px solid black;
     padding: 3px;
-}
+    margin: 3px;
+  }
 </style>

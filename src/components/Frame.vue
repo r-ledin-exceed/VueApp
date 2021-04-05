@@ -3,38 +3,38 @@
   class="dialog"
   v-model="dialog"
   width="400">
-
   <template v-slot:activator="{ on, attrs }">
     <img :src="require('@/assets/maps-and-flags.svg')"
     v-bind="attrs"
     v-on="on"  
     class="img"/>
-
-  </template>
-
+    </template>
+    <Player v-show="playersh"/>
       <v-card>
         <v-card-title class="headline grey lighten-2">
           Information
-        </v-card-title>
-        
-        <Player v-show="playersh === true"/>
-        <Table :namelabel="nameframe" :positionlabel="positionframe" v-show="edit === false"/>
-        <Input :oldid="idframe" v-show="edit === true"
-        @editmarker="editMarker"/>
-        
+        </v-card-title>       
+        <Table :namelabel="nameframe" :positionlabel="positionframe" v-show="!edit"/>
+        <Input :oldid="idframe" v-show="edit"
+        @editmarker="editMarker"/>       
         <v-divider></v-divider>
-          
         <v-card-actions>
           <v-spacer></v-spacer>
 
-          <v-btn
+          <v-btn v-if="!playersh"
             color="primary"
             text
             @click="playersh = true">
             Watch
           </v-btn>
+          <v-btn v-else
+            color="primary"
+            text
+            @click="playersh = false">
+            Close video
+          </v-btn>
 
-          <v-btn v-if="edit === false"
+          <v-btn v-if="!edit"
             color="primary"
             text
             @click="edit = true">
@@ -56,7 +56,6 @@
   import Table from "@/components/toFrame/Table"
   import Input from "@/components/toFrame/Input"
   import Player from "@/components/toFrame/Player"
-
 
   export default {
     props:['nameframe', 'positionframe', `idframe`],

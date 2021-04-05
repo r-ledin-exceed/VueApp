@@ -1,22 +1,10 @@
 <template>
 <div class="main">
   <v-card-text id="card">
-
-    <!-- MUST BE V-FOR="" -->
-    
     <span>Name:<v-text-field v-model="nameMarkers"></v-text-field></span> 
-    <v-divider></v-divider>
-   
-    <!-- ---------------- -->
-
     <span>Position1:<v-text-field v-model="position1"></v-text-field></span>
     <span>Position2:<v-text-field v-model="position2"></v-text-field></span>
-    <!-- <v-divider></v-divider>
-    <span>Signal: <v-text-field v-model="information.signal"></v-text-field> </span>  -->
-
   </v-card-text>
-
-  <v-divider></v-divider>
 
   <v-card-actions>
         <v-btn
@@ -24,7 +12,7 @@
         color="primary"
         text
         v-on:click="edit = false">
-        Emmit
+        Add marker
         </v-btn>
   </v-card-actions>
 </div>

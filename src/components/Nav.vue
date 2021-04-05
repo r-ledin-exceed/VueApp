@@ -19,34 +19,14 @@
         Markers
       </v-card-title>
 
-      <AllMarkers v-show="edit === false"/>
-      <AddMarker v-show="edit === true"
-      @addmarker = "onAddMarker"/>
+      <AllMarkers v-show="edit"
+      @editTwo= "TuEdit"/>
+      <AddMarker v-show="!edit"
+      @editOne= "OuEdit"
+      />
 
       <v-divider></v-divider>
         
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn
-        color="primary"
-        text
-        @click="dialog = false">
-        Close
-        </v-btn>
-
-        <v-btn v-if="edit === false"
-        color="primary"
-        text
-        @click="edit = true">
-        Add marker
-        </v-btn>
-        <v-btn v-else
-        color="primary"
-        text
-        @click="edit = false">
-        Save
-        </v-btn>
-      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
@@ -57,24 +37,29 @@ import AddMarker from "@/components/toNav/AddMarker"
 
 
 export default {
-  data () {
-    
+  data () { 
     return {
-      edit: false,
+      edit: true,
       dialog: false
       }
 
   },
   methods: {
-    onAddMarker(arr, namemarker) {
-      console.log(arr, namemarker, "data")
-      this.$store.dispatch('increment', {arr, namemarker})
+    TuEdit(editTwo) {
+      editTwo = false
+      this.edit = editTwo;
+      console.log(editTwo);
+    },
+    OuEdit(editOne) {
+      editOne = true
+      this.edit = editOne;
+      console.log(editOne);
     }
-    
    },
+
   components: {
-      AllMarkers,
-      AddMarker,
+    AllMarkers,
+    AddMarker,
   }
 }
 

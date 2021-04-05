@@ -9,14 +9,20 @@
     v-on="on"  
     class="img"/>
     </template>
-    <Player v-show="playersh"/>
+    <Player v-show="playersh"
+            :url-label="urlFrame"/>
       <v-card>
         <v-card-title class="headline grey lighten-2">
           Information
         </v-card-title>       
-        <Table :namelabel="nameframe" :positionlabel="positionframe" v-show="!edit"/>
-        <Input :oldid="idframe" v-show="edit"
-        @editmarker="editMarker"/>       
+        <Table :name-label="nameFrame" 
+        :position-label="positionFrame" 
+        v-show="!edit"
+        />
+        <Input :old-id="idFrame" 
+        v-show="edit"
+        @editmarker="editMarker"
+        />       
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -58,7 +64,7 @@
   import Player from "@/components/toFrame/Player"
 
   export default {
-    props:['nameframe', 'positionframe', `idframe`],
+    props:['nameFrame', 'positionFrame', 'idFrame', 'urlFrame'],
     data () {
       return {
         edit: false,

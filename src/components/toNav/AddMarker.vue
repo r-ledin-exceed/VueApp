@@ -8,10 +8,17 @@
 
   <v-card-actions>
         <v-btn
-        @click="addingNewMarker"
         color="primary"
+        @click= "show"
         text
-        v-on:click="edit = false">
+        v-on:click="edit=false">
+        Back
+        </v-btn>
+        <v-btn
+        color="primary"
+        @click = "addingNewMarker"
+        text
+        v-on:click="edit=false">
         Add marker
         </v-btn>
   </v-card-actions>
@@ -19,12 +26,10 @@
 </template>
 
 <script>
-
+import { v4 as uuidv4 } from 'uuid';
 export default {
   data () {  
     return {
-      arr: [+this.position1, +this.position2],
-      namemarker: this.nameMarkers,
       position1: '',
       position2: '',
       nameMarkers: '',
@@ -33,11 +38,21 @@ export default {
   },
   methods: {
   addingNewMarker() {
-    let arr = [+this.position1, +this.position2]
-    let namemarker = this.nameMarkers
-    this.$emit("addmarker", arr, namemarker)
-    console.log(typeof(arr), arr, namemarker)
-    }
+    const arr = [+this.position1, +this.position2];
+    this.$store.dispatch('increment', {arr, namemarker: this.nameMarkers}) //
+    const user = JSON.parse(localStorage.getItem('user'));
+         user.items.push({
+           name: this.nameMarkers,
+           coords: arr,
+           id: uuidv4(),
+           url: "https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_640_3MG.mp4" 
+         });
+    localStorage.setItem('user' , JSON.stringify(user));
+    console.log(user);
+    },
+     show() {
+      this.$emit("editOne", true)
+    },
   }
 }
 

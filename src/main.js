@@ -5,11 +5,7 @@ import 'vuelayers/lib/style.css'
 import VueLayers from 'vuelayers'
 import vuetify from '@/plugins/vuetify.js' // path to vuetify export
 import Vuex from 'vuex'
-import UUID from 'vue-uuid'
 import { v4 as uuidv4 } from 'uuid';
-// import { indexOf } from 'core-js/core/array'
-
-Vue.use(UUID);
 
 Vue.use(Map, {
   load: {
@@ -33,15 +29,13 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     items: [
-      {name:'3rd name', id: uuidv4(), coords: [-75.726634, 28.003391]}, 
-      {name:'2nd name', id: uuidv4(), coords: [62.726634, 12.003391]},
-      {name:'1st name', id: uuidv4(), coords: [0, 0]} 
-    ],
+
+    ]
   },
   mutations: {
-    increment (state, {coords, id, name}) {
-      state.items.push({coords, id, name});
-      console.log(state.items);
+    increment (state, {coords, id, name, url}) {
+      state.items.push({coords, id, name, url});
+      console.log('записано в storage',state.items);
   },
     edition (state, {coords, id, name}) {
     
@@ -55,26 +49,30 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    increment({commit}, {arr, namemarker}) {
+    increment({commit}, {arr, namemarker, urlUser}) {
       commit('increment', {
         coords: arr,
         id: uuidv4(),
-        name: namemarker
+        name: namemarker,
+        url: urlUser
         })
     },
-    edition({commit}, {arr, namemarker, id}) {
+    edition({commit}, {arr, namemarker, id, urlUser}) {
       commit('edition', {
         coords: arr,
         name: namemarker,
-        id: id
+        id: id,
+        url: urlUser,
       })
     },
   },
 
   getters: {
-    newMarkers: state => {
-      return state.items;
-    }}
+    newMarkers: () => {
+      const user = JSON.parse(localStorage.getItem('user'))
+      return user.items;
+    },
+  },
 });
 
 

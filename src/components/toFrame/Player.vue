@@ -5,8 +5,8 @@
     </v-card-title>
     <v-divider></v-divider>     
     <v-card-text>
-      <video class="mx-auto col" controls="controls">
-      <source src="https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_640_3MG.mp4" type="video/mp4">
+      <video class="mx-auto col" controls="controls">      
+      <source :src=urlLabel type="video/mp4">
       </video>
     </v-card-text>  
   </v-card>
@@ -15,6 +15,7 @@
 
 <script>
 export default {
+  props: ['urlLabel'],
   data() {
       return{
         

@@ -1,7 +1,6 @@
 <template>
  <v-card-text id="card">
 
-  <!-- MUST BE V-FOR="" -->
     <span>Name:<v-text-field v-model="editName"></v-text-field></span> 
     <v-divider></v-divider>
     <span>Position1:<v-text-field v-model="position1"></v-text-field></span>
@@ -14,8 +13,15 @@
         @click="editMarker"
         color="primary"
         text
-        v-on:click="edit = false">
-        Emmit
+        >
+        Change marker
+        </v-btn>
+        <v-btn
+        color="primary"
+        @click ="deleteMarker"
+        text
+        >
+        Delete marker
         </v-btn>
   </v-card-actions>
 
@@ -27,12 +33,9 @@
 <script>
 
 export default {
-  props: ['oldid'],
+  props: ['oldId'],
   data () { 
     return {
-       name: this.editName,
-       arr: [+this.position1, +this.position2],
-       id: this.oldid,
        position1: '',
        position2: '',
        editName: '',
@@ -40,11 +43,28 @@ export default {
   },
   methods: {
   editMarker(){
-    let arr = [+this.position1, +this.position2]
-    let namemarker = this.editName
-    let id = this.oldid
-    this.$emit("editmarker", arr, namemarker, id)
-    console.log(typeof(arr), arr, namemarker, id)
+    const arr = [+this.position1, +this.position2]
+    const user = JSON.parse(localStorage.getItem('user'));
+        const index = user.items.findIndex((item) => item.id === this.oldId)
+      if (index !== -1) {
+        user.items[index].name = this.editName;
+        user.items[index].coords = arr;
+        localStorage.setItem('user' , JSON.stringify(user));
+        console.log(user); 
+      }
+    this.$emit("editmarker", arr, this.editName, this.oldId)
+
+  },
+  deleteMarker() {
+    const arr = [+this.position1, +this.position2]
+    const user = JSON.parse(localStorage.getItem('user'));
+        const index = user.items.findIndex((item) => item.id === this.oldId)
+      if (index !== -1) {
+        user.items.splice(index, 1)
+        localStorage.setItem('user' , JSON.stringify(user));
+        console.log(user); 
+      }
+    this.$emit("editmarker", arr, this.editName, this.oldId)
   }
   
   }

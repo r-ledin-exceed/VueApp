@@ -1,12 +1,14 @@
 <template>
-<v-app id="app">
-  <v-main>
-    <Map/>
-      <div class="mapNav">
-        <Nav/>
-      </div>
-  </v-main>
-</v-app>
+<div>
+  <v-app id="app">
+    <v-main>
+      <Map/>
+        <div class="mapNav">
+          <Nav/>
+        </div>
+    </v-main>
+  </v-app>
+</div>
 </template>
 
 <script>
@@ -17,19 +19,19 @@ export default {
   name: 'App',
   components: {
     Map,
-    Nav
-    
+    Nav,
   }
 }
 
 </script>
 
 <style>
-*{
+* {
   padding: 0;
   margin: 0;
 }
-#app{
+
+#app {
   position: relative;
 }
 

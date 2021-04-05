@@ -1,9 +1,9 @@
 <template>
  <v-card-text id="card">
 
-    <span>Name: {{namelabel}} </span> 
+    <span>Name: {{nameLabel}} </span> 
     <v-divider></v-divider>
-    <span>Position: {{positionlabel}} </span>
+    <span>Position: {{positionLabel}} </span>
     <v-divider></v-divider>
     <span>Signal: {{information.signal}} </span> 
 
@@ -14,7 +14,7 @@
 <script>
 
 export default {
-  props: ['namelabel', 'positionlabel'],
+  props: ['nameLabel', 'positionLabel'],
   data () {
         
     return {

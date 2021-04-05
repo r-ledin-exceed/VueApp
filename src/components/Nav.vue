@@ -1,17 +1,19 @@
 <template>
-  <v-dialog data-app
-  class="dialog"
-  v-model="dialog"
-  width="400">
-
+  <v-dialog
+    v-model="dialog"
+    data-app
+    class="dialog"
+    width="400"
+  >
     <template v-slot:activator="{ on, attrs }">
-    <v-btn
-    color="red lighten-2"
-    dark
-    v-bind="attrs"
-    v-on="on">
+      <v-btn
+        color="red lighten-2"
+        dark
+        v-bind="attrs"
+        v-on="on"
+      >
         Navigation
-    </v-btn>
+      </v-btn>
     </template>
 
     <v-card>
@@ -19,49 +21,48 @@
         Markers
       </v-card-title>
 
-      <AllMarkers v-show="edit"
-      @editTwo= "TuEdit"/>
-      <AddMarker v-show="!edit"
-      @editOne= "OuEdit"
+      <AllMarkers
+        v-show="edit"
+        @editTwo="TuEdit"
+      />
+      <AddMarker
+        v-show="!edit"
+        @editOne="OuEdit"
       />
 
-      <v-divider></v-divider>
-        
+      <v-divider />
     </v-card>
   </v-dialog>
 </template>
 
 <script>
-import AllMarkers from "@/components/toNav/AllMarkers"
-import AddMarker from "@/components/toNav/AddMarker"
-
+import AllMarkers from '@/components/toNav/AllMarkers.vue';
+import AddMarker from '@/components/toNav/AddMarker.vue';
 
 export default {
-  data () { 
-    return {
-      edit: true,
-      dialog: false
-      }
-
-  },
-  methods: {
-    TuEdit(editTwo) {
-      editTwo = false
-      this.edit = editTwo;
-      console.log(editTwo);
-    },
-    OuEdit(editOne) {
-      editOne = true
-      this.edit = editOne;
-      console.log(editOne);
-    }
-   },
 
   components: {
     AllMarkers,
     AddMarker,
-  }
-}
-
+  },
+  data() {
+    return {
+      edit: true,
+      dialog: false,
+    };
+  },
+  methods: {
+    TuEdit(editTwo) {
+      // editTwo = false;
+      this.edit = editTwo;
+      console.log(editTwo);
+    },
+    OuEdit(editOne) {
+      // editOne = true;
+      this.edit = editOne;
+      console.log(editOne);
+    },
+  },
+};
 
 </script>
